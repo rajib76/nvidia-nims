@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+[metadata]
+name="nvidia-nims"
+version="0.0.0"
+[project]
+name="nvidia-nims"
+version="0.0.0"
+authors=[
+{name="Rajib Deb", email="rajib76.gcp@gmail.com"}
+]
+description="SDK for nvidia nims"
+readme="README.md"
+requires-python=">=3.10"
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies=[
+"requests==2.31.0",
+"python-dotenv==1.0.1",
+"pydantic==2.6.4"
+]
+[project.urls]
+"Homepage" = "https://github.com/rajib76/nvidia-nims"
+[tool.setuptools.packages.find]
+where=["."]
+include=["*"]
+exclude=["example_data"]
+namespaces=false
+
