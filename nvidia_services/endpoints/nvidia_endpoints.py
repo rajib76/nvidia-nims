@@ -1,11 +1,13 @@
 from enum import Enum
 
 import requests
+from openai import OpenAI
 
 
 class Endpoints(Enum):
     reranker = "https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking"
     embedding = "https://ai.api.nvidia.com/v1/retrieval/nvidia/embeddings"
+    generation = "https://integrate.api.nvidia.com/v1"
 
 
 class CallEndpoints():
@@ -46,6 +48,30 @@ class CallEndpoints():
         response_body = response.json()
 
         return response_body
+
+    def return_genai_response(self,**kwargs):
+        api_key = kwargs["api_key"]
+        model = kwargs["model"]
+        temperature =  kwargs["temperature"]
+        top_p = kwargs["top_p"]
+        max_tokens = kwargs["max_tokens"]
+        print(max_tokens)
+        stream = kwargs["stream"]
+
+        client = OpenAI(
+                base_url=Endpoints.generation.value,
+                api_key=api_key
+            )
+
+        completion = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": kwargs["input"]}],
+                temperature=temperature,
+                top_p=top_p,
+                max_tokens=max_tokens,
+                stream=stream
+            )
+        return completion
 
 
 

@@ -7,12 +7,12 @@ from typing import List
 
 from pydantic.v1 import Field, validator
 
-from endpoints.nvidia_endpoints import Endpoints, CallEndpoints
-from retrievals.base import BaseRetrieval
+from nvidia_services.endpoints.nvidia_endpoints import Endpoints, CallEndpoints
+from nvidia_services.retrievals.base import BaseRetrieval
 
 
 class NVDIARerankerMistral(BaseRetrieval):
-    invoke_url: str = Field(default=Endpoints.reranker.value)
+    # invoke_url: str = Field(default=Endpoints.reranker.value)
     reranker_model: str = Field(default="nv-rerank-qa-mistral-4b:1")
     api_key: str
 

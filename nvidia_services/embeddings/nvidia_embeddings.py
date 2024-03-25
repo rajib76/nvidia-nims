@@ -5,7 +5,7 @@
 import requests
 from pydantic.v1 import validator, Field
 
-from embeddings.base import BaseEmbeddings
+from nvidia_services.embeddings.base import BaseEmbeddings
 
 
 class NVIDIAEmbeddings(BaseEmbeddings):

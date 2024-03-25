@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from retrievals.nvidia_reranker import NVDIARerankerMistral
+from nvidia_services.retrievals.nvidia_reranker import NVDIARerankerMistral
 
 load_dotenv()
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")

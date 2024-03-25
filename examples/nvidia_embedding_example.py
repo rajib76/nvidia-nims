@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from embeddings.nvidia_embeddings import NVIDIAEmbeddings
+from nvidia_services.embeddings.nvidia_embeddings import NVIDIAEmbeddings
 
 load_dotenv()
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
