@@ -55,8 +55,8 @@ class CallEndpoints():
         temperature =  kwargs["temperature"]
         top_p = kwargs["top_p"]
         max_tokens = kwargs["max_tokens"]
-        print(max_tokens)
         stream = kwargs["stream"]
+        prompt = kwargs["prompt"]
 
         client = OpenAI(
                 base_url=Endpoints.generation.value,
@@ -65,7 +65,7 @@ class CallEndpoints():
 
         completion = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": kwargs["input"]}],
+                messages=[{"role": "user", "content": prompt}],
                 temperature=temperature,
                 top_p=top_p,
                 max_tokens=max_tokens,

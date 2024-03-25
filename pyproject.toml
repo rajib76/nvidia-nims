@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 [metadata]
 name="nvidia-services"
-version="0.0.1"
+version="0.0.2"
 [project]
 name="nvidia-services"
-version="0.0.1"
+version="0.0.2"
 authors=[
 {name="Rajib Deb", email="rajib76.gcp@gmail.com"}
 ]

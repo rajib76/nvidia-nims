@@ -22,12 +22,10 @@ class MistralAIModels(BaseLMModel):
         return api_key
 
 
-    @root_validator(pre=True)
+    @root_validator()
     def validate_kwargs(cls, values: Dict) -> Dict:
         """Validate that return messages is not True."""
         try:
-            if values.get('prompt') is None:
-                raise ValueError('prompt key must be provided')
             if values.get('temperature', False):
                 print("temperature not specified. Will use default of 0.5")
             if values.get('top_p', False):
@@ -37,20 +35,16 @@ class MistralAIModels(BaseLMModel):
             if values.get('stream', False):
                 print("stream not specified. Will use default of True")
             return values
-        except ValueError as ve:
-            print(ve)
-            exit(1)
         except Exception as e:
             print(e)
 
     def generate_response(self, **kwargs):
-        print(self.temperature)
         invoke_client = CallEndpoints()  # TO DO need to move to initialize
         model = self.generation_model
         prompt = kwargs["prompt"]
         response_body = invoke_client.return_genai_response(api_key=self.api_key,
                                                             model=model,
-                                                            input=prompt,
+                                                            prompt=prompt,
                                                             temperature=self.temperature,
                                                             top_p=self.top_p,
                                                             max_tokens=self.max_tokens,
